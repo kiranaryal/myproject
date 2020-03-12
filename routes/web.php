@@ -17,12 +17,7 @@ Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
 Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
 
-Route::patch('/search',function(){
-    $q = Request::get ( 'q' );
-    $user = User::where('name','LIKE','%'.$q.'%')->orWhere('email','LIKE','%'.$q.'%')->get();
-    if(count($user) > 0)
-        return view('search')->withDetails($user)->withQuery ( $q );
-    else return view ('search')->withMessage('No Details found. Try to search again !');
-});
+Route::patch('/search','SearchController@search');
+Route::get('/delete/{id}','PostsController@destroy');
 
 ?>

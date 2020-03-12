@@ -10,20 +10,33 @@
         </div>
         <div>
             <div class="d-flex align-items-center">
-                <div class="p-3">
-                    <img src="/storage/{{$post->user->profile->image }}" class="w-100 rounded-circle" style="max-width:40px" >
-                </div>    
-                <div>
-                   <h3> <a href="/profile/{{$post->user->id}}"><span class="text-dark">{{$post->user->username}}</span></a></h3>
-                </div>
-                <div class="pl-2">
-                <a href="">follow</a>
-                </div>  
+                     <div class="p-3">
+                        <img src="/storage/{{$post->user->profile->image }}" class="w-100 rounded-circle" style="max-width:40px" >
+                    </div>    
+                    <div>
+                        <h3> 
+                        <a href="/profile/{{$post->user->id}}">
+                        <span class="text-dark">{{$post->user->username}}</span></a></h3>
+                    </div>
+                    <div class="d-flex">
+                        <div class="pl-2">
+                        <a href="">follow</a>
+                        </div> 
 
-            </div>
+                        @can('update', $post->user->profile)
+                        <div class="pl-2">
+                            <a href="/delete/{{$post->id}}">delete</a>
+                        </div>  
+                        @endcan
+                        
+                    </div>
+             </div>
                 <hr>
                 <div class="d-flex">
-                <span class="pr-2"> <a href="/profile/{{$post->user->id}}"><span class="text-dark">{{$post->user->username}}</span></a></span><h4>{{ $post->caption}}</h4>
+                <span class="pr-2"> <a href="/profile/{{$post->user->id}}">
+                <span class="text-dark">{{$post->user->username}}</span></a>
+                </span>
+                <h4>{{ $post->caption}}</h4>
         </div>
         </div>
 

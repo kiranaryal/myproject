@@ -48,4 +48,11 @@ class PostsController extends Controller
 
 
     }
+    public function destroy($id){
+        $post = POST::find($id);
+        $post->delete();
+
+        return redirect('/profile/'.auth()->user()->id)->with('success', 'post deleted!');
+
+    }
 }

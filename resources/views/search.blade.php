@@ -15,8 +15,8 @@
         </thead>
         <tbody>
             @foreach($details as $user)
-            <tr>
-                <td><a href="/profile/{{$user->id}}">{{$user->name}}</a></td>
+            <tr><td><img src="/storage/{{$user->profile->image }}" class="w-100 rounded-circle" style="max-width:40px" >
+                <a href="/profile/{{$user->id}}">{{$user->name}}</a></td>
                 <td>{{$user->email}}</td>
             </tr>
             @endforeach
